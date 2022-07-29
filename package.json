@@ -1,0 +1,47 @@
+{
+  "name": "@lanseria/vue-pdf-vite",
+  "description": "This project is for the vitejs vuejs3 pdfjs-dist pdf-lib library, built together with the components",
+  "version": "1.0.5",
+  "files": [
+    "dist",
+    "dist/*.css"
+  ],
+  "main": "./dist/vue-pdf-vite.umd.js",
+  "module": "./dist/vue-pdf-vite.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-pdf-vite.es.js",
+      "require": "./dist/vue-pdf-vite.umd.js"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lanseria/vue-pdf-useinvite.git"
+  },
+  "homepage": "https://github.com/Lanseria/vue-pdf-useinvite#readme",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "serve": "vite preview",
+    "release:package": "npm run build && npm publish"
+  },
+  "dependencies": {
+    "@vicons/ionicons5": "^0.10.0",
+    "@vueuse/core": "^7.6.1",
+    "naive-ui": "^2.15.1",
+    "pdf-lib": "^1.16.0",
+    "pdfjs-dist": "2.8.335",
+    "vue": "^3.2.30"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.0",
+    "@vitejs/plugin-vue": "^2.0.0",
+    "@vue/compiler-sfc": "^3.2.30",
+    "postcss": "^8.4.14",
+    "typescript": "^4.5.5",
+    "vite": "^2.8.0",
+    "vue-tsc": "^0.31.2"
+  }
+}

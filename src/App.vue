@@ -1,20 +1,16 @@
 <template>
-  <div>
-    <pdf-editor
-      src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf"
-    ></pdf-editor>
-  </div>
+  <router-view />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { PdfEditor } from "../packages/";
+import { defineComponent } from "vue"
+import { PdfEditor } from "../packages/"
 export default defineComponent({
   name: "App",
   components: {
     PdfEditor,
   },
-});
+})
 </script>
 
 <style>

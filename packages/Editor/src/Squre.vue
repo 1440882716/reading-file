@@ -13,7 +13,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive, toRefs, watch } from "vue"
 import { useMouseInElement, useMousePressed } from "@vueuse/core"
-import { ColorTypes, rgb } from "pdf-lib"
+// import { ColorTypes, rgb } from "pdf-lib"
 const Squre = defineComponent({
   props: {
     width: {

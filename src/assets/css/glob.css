@@ -1,0 +1,89 @@
+.content{
+    padding: 0;
+    margin: 0;
+}
+input:focus{   
+	border:none;
+}
+/* =======font-size */
+.font11 {
+    font-size: 11px;
+  }
+  .font12 {
+    font-size: 12px;
+  }
+  .font13 {
+    font-size: 13px;
+  }
+  .font14 {
+    font-size: 14px;
+  }
+  .font15 {
+    font-size: 15px;
+  }
+  .font16 {
+    font-size: 16px;
+  }
+  .font17 {
+    font-size: 17px;
+  }
+  .font18 {
+    font-size: 18px;
+  }
+  .font20 {
+    font-size: 20px;
+  }
+  .font22 {
+    font-size: 22px;
+  }
+  .font24 {
+    font-size: 24px;
+  }
+  .font28 {
+    font-size: 28px;
+  }
+  .font48 {
+    font-size: 48px;
+  }
+  .bold-font {
+    font-weight: bold;
+  }
+  .bold500 {
+    font-weight: 500;
+  }
+  .bold600 {
+    font-weight: 600;
+  }
+  .bold700 {
+    font-weight: 700;
+  }
+  /* ===========color */
+  .title-color{
+    color: #333333 ;
+  }
+  .note-color{
+    color: #1B9BFC ;
+  }
+  .gray-color{
+    color: #757575;
+  }
+  /* ===========间距 */
+  .m-t-10{
+    margin-top: 10px;
+  }
+  .m-t-20{
+    margin-top: 20px;
+  }
+  .m-t-30{
+    margin-top: 30px;
+  }
+  .m-b-20{
+    margin-bottom: 20px;
+  }
+  /* ========文字方向 */
+  .text-left{
+    text-align: left;
+  }
+  .text-right{
+    text-align: right;
+  }

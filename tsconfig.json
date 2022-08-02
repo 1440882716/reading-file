@@ -9,7 +9,7 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
-    "typeRoots": ["./node_modules/@types", "./packages/types"]
+    "typeRoots": ["./node_modules/@types", "./packages/types"],
   },
   "include": [
     "src/**/*.ts",

@@ -75,13 +75,13 @@ import {
   NDescriptionsItem,
   NIcon,
   NSpin,
-} from "naive-ui";
+} from "naive-ui"
 import {
   CaretBack as CaretBackIcon,
   CaretForward as CaretForwardIcon,
   Information as InformationIcon,
   Menu as MenuIcon,
-} from "@vicons/ionicons5";
+} from "@vicons/ionicons5"
 import {
   computed,
   defineComponent,
@@ -89,17 +89,17 @@ import {
   reactive,
   toRefs,
   PropType,
-} from "vue";
-import * as pdfjsLib from "pdfjs-dist";
+} from "vue"
+import * as pdfjsLib from "pdfjs-dist"
 import type {
   PDFDocumentProxy,
   PDFPageProxy,
   TypedArray,
-} from "pdfjs-dist/types/display/api";
-import { getBufferArray } from "../../utils";
+} from "pdfjs-dist/types/display/api"
+import { getBufferArray } from "../../utils"
 // @ts-ignore
-import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry";
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry"
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker
 const pdfViewerProps = {
   src: {
     type: String,
@@ -117,7 +117,7 @@ const pdfViewerProps = {
     type: Boolean,
     default: true,
   },
-};
+}
 const PdfViewer = defineComponent({
   name: "PdfViewer",
   emits: ["update-state"],
@@ -139,7 +139,7 @@ const PdfViewer = defineComponent({
       CanvasRef: {} as HTMLCanvasElement,
       RenderContentRef: {} as HTMLElement,
       loading: true,
-      isEdit: false,
+      isEdit: true,
       current: 1,
       total: 0,
       pdfDoc: {} as PDFDocumentProxy,
@@ -150,93 +150,93 @@ const PdfViewer = defineComponent({
         subject: "",
         keywords: "",
       },
-    });
+    })
     // computed
     const prevDisabled = computed(() => {
       if (state.total === 0) {
-        return true;
+        return true
       } else {
         if (state.current === 1) {
-          return true;
+          return true
         } else {
-          return false;
+          return false
         }
       }
-    });
+    })
     const nextDisabled = computed(() => {
       if (state.total === 0) {
-        return true;
+        return true
       } else {
         if (state.current === state.total) {
-          return true;
+          return true
         } else {
-          return false;
+          return false
         }
       }
-    });
+    })
     // method
     const handlePrev = () => {
-      state.current--;
-      getPdfPage(state.current);
-    };
+      state.current--
+      getPdfPage(state.current)
+    }
     const handleNext = () => {
-      state.current++;
-      getPdfPage(state.current);
-    };
+      state.current++
+      getPdfPage(state.current)
+    }
     const render = async () => {
       // Display page on the existing canvas with 100% scale.
-      const viewport = state.pdfPage.getViewport({ scale: 1.0 });
-      state.CanvasRef.width = viewport.width;
-      state.CanvasRef.height = viewport.height;
-      const ctx = state.CanvasRef.getContext("2d");
+      const viewport = state.pdfPage.getViewport({ scale: 1.0 })
+      state.CanvasRef.width = viewport.width
+      state.CanvasRef.height = viewport.height
+      const ctx = state.CanvasRef.getContext("2d")
       if (!ctx) {
-        return;
+        return
       }
       const renderTask = state.pdfPage.render({
         canvasContext: ctx,
         viewport,
-      });
-      await renderTask.promise;
+      })
+      await renderTask.promise
       // emit to parent
       emit("update-state", {
         current: state.current,
         total: state.total,
         viewportWidth: viewport.width,
         viewportHeight: viewport.height,
-      });
-    };
+      })
+    }
     const getPdfPage = async (crt = state.current) => {
       if (!state.pdfDoc) {
-        return;
+        return
       }
-      state.pdfPage = await state.pdfDoc.getPage(crt);
-      await render();
-      state.loading = false;
+      state.pdfPage = await state.pdfDoc.getPage(crt)
+      await render()
+      state.loading = false
       state.RenderContentRef.scrollTo({
         top: 0,
-      });
-    };
+      })
+    }
     const refreshPdfDoc = async (buf: TypedArray) => {
-      state.pdfDoc = await pdfjsLib.getDocument(buf as TypedArray).promise;
-      state.total = state.pdfDoc.numPages;
+      state.pdfDoc = await pdfjsLib.getDocument(buf as TypedArray).promise
+      state.total = state.pdfDoc.numPages
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { info }: { info: any } = await state.pdfDoc.getMetadata();
+      const { info }: { info: any } = await state.pdfDoc.getMetadata()
       state.info = {
         title: info.Title,
         author: info.Author,
         subject: info.Subject,
         keywords: info.Keywords,
-      };
-      getPdfPage(state.current);
-    };
+      }
+      getPdfPage(state.current)
+    }
     const getPdfDoc = async () => {
       if (props.src) {
-        await refreshPdfDoc(await getBufferArray(props.src));
+        await refreshPdfDoc(await getBufferArray(props.src))
       }
-    };
+    }
     onMounted(() => {
-      getPdfDoc();
-    });
+      getPdfDoc()
+    })
     return {
       // ref
       ...toRefs(state),
@@ -247,11 +247,11 @@ const PdfViewer = defineComponent({
       handlePrev,
       handleNext,
       refreshPdfDoc,
-    };
+    }
   },
-});
-export default PdfViewer;
-export type PdfViewerRefs = InstanceType<typeof PdfViewer>;
+})
+export default PdfViewer
+export type PdfViewerRefs = InstanceType<typeof PdfViewer>
 </script>
 <style scoped>
 .pdf-viewer-wrap {

@@ -154,8 +154,10 @@
       </n-button-group>
       <n-button-group v-else>
         <n-button title="重做" @click="handleRestore()">重做</n-button>
-        <n-button title="画笔" @click="handlePaint()">画笔</n-button>
         <n-button title="文字" @click="handleText()">文字</n-button>
+        <n-button title="注释">注释</n-button>
+        <n-button title="画笔" @click="handlePaint()">画笔</n-button>
+        <n-button title="划线">划线</n-button>
         <n-button title="线框" @click="handleSqure()">线框</n-button>
         <n-button title="保存" @click="handleSave()">保存</n-button>
       </n-button-group>

@@ -64,12 +64,30 @@ input:focus{
   .note-color{
     color: #1B9BFC ;
   }
+  .deep-gray{
+    color: #666666 ;
+  }
   .gray-color{
     color: #757575;
+  }
+  .gray-title{
+    color: #999999;
+  }
+  .font-fff{
+    color: #ffffff;
+  }
+  .main-red{
+    color: #D64533;
+  }
+  .gray-red{
+    color: #FAE8E6;
   }
   /* ===========间距 */
   .m-t-10{
     margin-top: 10px;
+  }
+  .m-t-12{
+    margin-top: 12px;
   }
   .m-t-20{
     margin-top: 20px;
@@ -80,10 +98,51 @@ input:focus{
   .m-b-20{
     margin-bottom: 20px;
   }
+  .m-r-17{
+    margin-right: 17px;
+  }
+  .m-l-20{
+    margin-left: 20px;
+  }
+  .m-l-120px{
+    margin-left: 120px;
+  }
+  .box-padding{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .padding24-l-r{
+    padding-left: 24px;
+    padding-right: 24px;
+  }
   /* ========文字方向 */
   .text-left{
     text-align: left;
   }
   .text-right{
     text-align: right;
+  }
+  /* 定位 */
+  .relative{
+    position: relative;
+  }
+  .absolute{
+    position: absolute;
+  }
+  .flex-r{
+    display: flex;
+    flex-direction: row;
+  }
+  .flex-c{
+    display: flex;
+    flex-direction: column;
+  }
+  .flex-a{
+    justify-content: space-around;
+  }
+  .flex-b{
+    justify-content: space-between;
+  }
+  .flex-end{
+    justify-content: flex-end;
   }

@@ -1,23 +1,23 @@
 <template>
-  <div style="display: flex">
-    <div @click="">会议</div>
-    <div @click="toDetail">文件</div>
-    <div @click="toLogin">登录</div>
-  </div>
-
+  <Header></Header>
   <div>
     <pdf-editor
       src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf"
     ></pdf-editor>
   </div>
+  <Footer></Footer>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue"
 import { PdfEditor } from "../../packages/"
 import { useRouter } from "vue-router"
+import Header from "../components/header.vue"
+import Footer from "../components/footer.vue"
 export default defineComponent({
   components: {
+    Header,
     PdfEditor,
+    Footer,
   },
   setup() {
     const router = useRouter()

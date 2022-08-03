@@ -8,6 +8,7 @@ interface phoneCode{
 }
 export class InitData{
     loginType:number=1
+    findStep:number=1
     loginForm:loginData={
         phone:'',
         password:''

@@ -1,7 +1,12 @@
 <template>
   <div class="bg-img">
-    <div class="font28 title-color bold500">密码找回</div>
-    <div class="input-box">
+    <div
+      class="font28 title-color bold500"
+      v-show="findStep == 1 || findStep == 2"
+    >
+      密码找回
+    </div>
+    <div class="input-box" v-show="findStep == 1">
       <input
         class="login-ipt"
         type="text"
@@ -18,17 +23,70 @@
         <div class="get-code m-t-30">获取验证码</div>
       </div>
     </div>
-    <button class="btn-box font16 m-t-30 m-b-20" @click="login">下一步</button>
+    <button
+      class="btn-box font16 m-t-30 m-b-20"
+      v-show="findStep == 1"
+      @click="findStep = 2"
+    >
+      下一步
+    </button>
+    <!-- 第二步 -->
+    <div class="input-box flex-c" v-show="findStep == 2">
+      <input
+        class="login-ipt"
+        type="password"
+        v-model="codeLogin.phone"
+        placeholder="新的密码"
+        @keydown.enter.prevent
+      />
+      <input
+        class="login-ipt m-t-28"
+        type="password"
+        v-model="codeLogin.phone"
+        placeholder="确认密码"
+        @keydown.enter.prevent
+      />
+    </div>
+    <button
+      class="btn-box font16 m-t-30 m-b-20"
+      v-show="findStep == 2"
+      @click="findStep = 3"
+    >
+      更改密码
+    </button>
+    <!-- 修改成功 -->
+    <div class="flex-c success-box" v-show="findStep == 3">
+      <img class="success-icon" src="../assets/imgs/success.png" alt="" />
+      <div class="font20 title-color success-text">修改密码成功！</div>
+      <button
+        class="btn-box font16 m-t-30 m-b-20"
+        v-show="findStep == 3"
+        @click="toLogin"
+      >
+        立即登录
+      </button>
+    </div>
   </div>
 </template>
 <script>
 import { defineComponent, reactive, toRefs } from "vue"
 import { InitData } from "../types/login"
+import { useRouter } from "vue-router"
 export default defineComponent({
   setup() {
     const data = reactive(new InitData())
+    const router = useRouter()
+    const toLogin = () => {
+      router.push({
+        path: "/login",
+        query: {
+          // goodsId: id,
+        },
+      })
+    }
     return {
       ...toRefs(data),
+      toLogin,
     }
   },
 })
@@ -37,7 +95,7 @@ export default defineComponent({
 @import "../assets/css/glob.css";
 .bg-img {
   width: 100%;
-  height: 730px;
+  height: 568px;
   background-color: #ffffff;
   margin-top: 38px;
   background-image: url(../assets/imgs/find-pwd.png);
@@ -48,8 +106,8 @@ export default defineComponent({
   width: 398px;
   height: 118px;
   margin: 0 auto;
-  margin-top: 40px;
-  margin-bottom: 34px;
+  margin-top: 64px;
+  margin-bottom: 54px;
   /* background-color: bisque; */
 }
 .login-ipt {
@@ -69,6 +127,7 @@ export default defineComponent({
   border-radius: 20px 20px 20px 20px;
   border: none;
   color: #ffffff;
+  margin: 0 auto;
 }
 .login-ipt-code {
   width: 254px;
@@ -92,5 +151,20 @@ export default defineComponent({
 .code-box {
   width: 398px;
   /* background-color: teal; */
+}
+.success-box {
+  /* background-color: teal; */
+  padding-top: 43px;
+  text-align: center;
+}
+.success-icon {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto;
+  margin-bottom: 23px;
+}
+.success-text {
+  text-align: center;
+  margin-bottom: 73px;
 }
 </style>

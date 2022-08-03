@@ -16,10 +16,28 @@ const routes: Array<RouteRecordRaw> = [
     meta: { title: "会议阅文" },
   },
   {
+    path: '/meetingDetail',
+    name: 'meetingDetail',
+    component: () => import(/* webpackChunkName: "about" */ '../views/meetingDetail.vue'),
+    meta: { title: "会议详情" },
+  },
+  {
+    path: '/fileDetail',
+    name: 'fileDetail',
+    component: () => import(/* webpackChunkName: "about" */ '../views/fileDetail.vue'),
+    meta: { title: "文件详情" },
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "about" */ '../views/login.vue')
+  },
+  {
+    path: '/forget',
+    name: 'forget',
+    component: () => import(/* webpackChunkName: "about" */ '../views/forget.vue')
   }
+  
 ]
 
 const router = createRouter({

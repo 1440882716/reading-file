@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ElMessage } from "element-plus"
+// import { ElMessage } from "element-plus"
 
 
 const $http = axios.create({
@@ -24,7 +24,7 @@ $http.interceptors.request.use(config => {
 $http.interceptors.response.use(res => {
     const code:number = res.data.code
     if(code != 200){
-        ElMessage.error(res.data.msg) 
+        // ElMessage.error(res.data.msg) 
     }
     return res.data
 },err=>{

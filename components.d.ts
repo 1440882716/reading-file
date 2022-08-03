@@ -12,10 +12,12 @@ declare module '@vue/runtime-core' {
     Msg: typeof import('./src/components/msg.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    VanCol: typeof import('vant/es')['Col']
     VanCountDown: typeof import('vant/es')['CountDown']
     VanDivider: typeof import('vant/es')['Divider']
     VanIcon: typeof import('vant/es')['Icon']
     VanNavBar: typeof import('vant/es')['NavBar']
+    VanRow: typeof import('vant/es')['Row']
     VanTabbar: typeof import('vant/es')['Tabbar']
     VanTabbarItem: typeof import('vant/es')['TabbarItem']
   }

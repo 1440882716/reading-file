@@ -8,7 +8,9 @@
         src="../assets/imgs/meeting02.png"
         alt=""
       />
-      <div class="font14 font-fff absolute to-meeting">立即进入</div>
+      <div class="font14 font-fff absolute to-meeting" @click="toDetail">
+        立即进入
+      </div>
       <div class="meeting-info">
         <span class="font16 title-color bold600"
           >成都双流区第22届人大代表会议</span
@@ -146,7 +148,7 @@ export default defineComponent({
     const active = ref(0)
     const toDetail = () => {
       router.push({
-        path: "/files",
+        path: "/meetingDetail",
         query: {
           // goodsId: id,
         },

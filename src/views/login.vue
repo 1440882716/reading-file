@@ -5,7 +5,8 @@
     </div>
     <div class="bg-right">
       <span class="login-title font28 title-color bold500">会议阅文系统</span>
-      <div class="input-box">
+      <!-- 账号密码登录 -->
+      <div class="input-box" v-if="loginType == 1">
         <!-- <input class="login-ipt" type="number" placeholder="输入手机号码" /> -->
         <n-input
           class="login-ipt"
@@ -28,7 +29,36 @@
         <button class="btn-box font16 m-t-30 m-b-20" @click="login">
           登录
         </button>
-        <span class="font14 gray-color">手机验证码登录</span>
+        <span class="font14 gray-color" @click="loginType = 2"
+          >手机验证码登录</span
+        >
+      </div>
+      <!-- 手机验证码登录 -->
+      <div class="input-box" v-if="loginType == 2">
+        <n-input
+          class="login-ipt"
+          type="text"
+          v-model:value="loginForm.phone"
+          placeholder="输入手机号码"
+          @keydown.enter.prevent
+        />
+        <div class="flex-r flex-b m-b-30">
+          <n-input
+            class="login-ipt-code m-t-30"
+            type="text"
+            v-model:value="loginForm.password"
+            placeholder="输入验证码"
+            @keydown.enter.prevent
+          />
+          <div class="get-code m-t-30">获取验证码</div>
+        </div>
+
+        <button class="btn-box font16 m-t-30 m-b-20" @click="login">
+          登录
+        </button>
+        <span class="font14 gray-color" @click="loginType = 1"
+          >账号密码登录</span
+        >
       </div>
     </div>
   </div>
@@ -71,15 +101,19 @@ export default defineComponent({
     }
     const forgetPwd = () => {
       router.push({
-        path: "/",
+        path: "/forget",
         query: {
           // goodsId: id,
         },
       })
     }
+    // const changeLogin = (2) => {
+
+    // }
     return {
       ...toRefs(data),
       //   message,
+      forgetPwd,
       login,
     }
   },
@@ -127,5 +161,24 @@ export default defineComponent({
   border-radius: 20px 20px 20px 20px;
   border: none;
   color: #ffffff;
+}
+.login-ipt-code {
+  width: 250px;
+  height: 42px;
+  line-height: 42px;
+  border-radius: 22px;
+  border: 1px solid #f7f7f7;
+  background: #f7f7f7;
+  text-align: left;
+  padding-left: 10px;
+}
+.get-code {
+  width: 130px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 40px 40px 40px 40px;
+  border: 1px solid #d64533;
+  color: #d64533;
 }
 </style>

@@ -5,6 +5,7 @@
 input:focus{   
 	border:none;
 }
+
 /* =======font-size */
 .font11 {
     font-size: 11px;
@@ -23,6 +24,7 @@ input:focus{
   }
   .font16 {
     font-size: 16px;
+   
   }
   .font17 {
     font-size: 17px;
@@ -64,6 +66,9 @@ input:focus{
   .note-color{
     color: #1B9BFC ;
   }
+  .tag-blue{
+    color: #0090FF ;
+  }
   .deep-gray{
     color: #666666 ;
   }
@@ -89,14 +94,29 @@ input:focus{
   .m-t-12{
     margin-top: 12px;
   }
+  .m-t-16{
+    margin-top: 16px;
+  }
   .m-t-20{
     margin-top: 20px;
   }
   .m-t-30{
     margin-top: 30px;
   }
+  .m-b-10{
+    margin-bottom: 10px;
+  }
   .m-b-20{
     margin-bottom: 20px;
+  }
+  .m-b-30{
+    margin-bottom: 30px;
+  }
+  .m-l-10{
+    margin-left: 10px;
+  }
+  .m-l-12{
+    margin-left: 12px;
   }
   .m-r-17{
     margin-right: 17px;

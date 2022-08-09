@@ -3,13 +3,17 @@
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
-    "strict": true,
+    "strict": false,
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "typeRoots": ["./node_modules/@types", "./packages/types"],
+    "baseUrl": "./" , // 解析非相对模块的基础地址，默认是当前目录
+    "paths":{ // 路径映射，相对于baseUrl
+        "@/*": ["src/*"]
+    }
   },
   "include": [
     "src/**/*.ts",

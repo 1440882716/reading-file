@@ -1,6 +1,8 @@
 <template>
   <header>
-    <van-nav-bar :title="titleTxt" />
+    <van-config-provider :theme-vars="themeVars">
+      <van-nav-bar left-arrow :title="titleTxt" @click-left="onClickLeft" />
+    </van-config-provider>
   </header>
 </template>
 <script>
@@ -15,11 +17,17 @@ export default defineComponent({
   setup() {
     const route = useRoute()
     const data = reactive(new InitData())
+    const themeVars = {
+      navBarIconColor: "#333333",
+    }
     onMounted(() => {
       data.titleTxt = route.meta.title
     })
+    const onClickLeft = () => history.back()
     return {
       ...toRefs(data),
+      themeVars,
+      onClickLeft,
     }
   },
 })

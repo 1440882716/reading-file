@@ -57,7 +57,10 @@
     <!-- 会议文件列表 -->
     <div class="files-content box-padding">
       <div class="file-title font18 title-color">会议文件</div>
-      <div v-for="item in meetingList" @click="toFileDetail">
+      <div
+        v-for="item in meetingList"
+        @click="toFileDetail(item.id, item.userId)"
+      >
         <div class="file-item flex-r">
           <img src="../assets/imgs/pdf-icon.png" alt="" />
           <span class="font14 title-color"
@@ -72,7 +75,7 @@
 import { defineComponent, reactive, toRefs } from "vue"
 import { useRouter } from "vue-router"
 import Header from "../components/header.vue"
-import { InitData } from "../types/meeting"
+import { InitData } from "../types/meeting.ts"
 export default defineComponent({
   components: {
     Header,
@@ -80,16 +83,27 @@ export default defineComponent({
   setup() {
     const router = useRouter()
     const data = reactive(new InitData())
-    const toFileDetail = () => {
-      router.push({
-        path: "/fileDetail",
-        query: {
-          // goodsId: id,
-        },
-      })
+    const getViewUrlDbPath = (fileId, userId) => {
+      const params = {
+        fileId: fileId,
+        userId: userId,
+      }
+      //  getViewUrlDbPath(params).then(res) => {
+
+      //  }
+    }
+    const toFileDetail = (fileId, userId) => {
+      getViewUrlDbPath(fileId, userId)
+      // router.push({
+      //   path: "/fileDetail",
+      //   query: {
+      //     // goodsId: id,
+      //   },
+      // })
     }
     return {
       ...toRefs(data),
+      getViewUrlDbPath,
       toFileDetail,
     }
   },
@@ -119,9 +133,10 @@ export default defineComponent({
   height: 86px;
   padding: 20px 16px;
   /* margin-top: 34px; */
-  background: #ffffff;
+  /* background: #ffffff; */
   border-radius: 8px 8px 8px 8px;
-  opacity: 0.72;
+  /* opacity: 0.72; */
+  background-color: rgba(255, 255, 255, 0.72);
 }
 .files-content {
   background: #ffffff;

@@ -6,6 +6,7 @@ interface fileData{
     img:string
 }
 export class InitData{
+    simpleMode:Boolean=false
     fileType:number=1
     fileList:fileData[]=[
         {

@@ -124,7 +124,14 @@
   <Footer></Footer>
 </template>
 <script>
-import { defineComponent, reactive, toRefs, onMounted, ref } from "vue"
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  onMounted,
+  ref,
+  getCurrentInstance,
+} from "vue"
 import { NavBar, Icon, Tabbar, TabbarItem, CountDown } from "vant"
 import { useRouter, useRoute } from "vue-router"
 import Header from "../components/header.vue"
@@ -145,6 +152,7 @@ export default defineComponent({
     const router = useRouter()
     const route = useRoute()
     const data = reactive(new InitData())
+    // const { proxy } = getCurrentInstance()
     const active = ref(0)
     const toDetail = () => {
       router.push({
@@ -166,6 +174,7 @@ export default defineComponent({
     }
     const changeMeeting = (num) => {
       data.meetingType = num
+      // proxy.$toast({ message: "开启失败，请稍后再试" })
       // console.log(data.meetingType)
       // debugger
     }
@@ -174,9 +183,11 @@ export default defineComponent({
     })
     return {
       ...toRefs(data),
+      // proxy
       active,
       toDetail,
       toLogin,
+
       changeMeeting,
     }
   },
@@ -205,10 +216,11 @@ export default defineComponent({
 .meeting-info {
   height: 86px;
   padding: 20px 16px;
-  /* margin-top: 34px; */
-  background: #ffffff;
   border-radius: 8px 8px 8px 8px;
-  opacity: 0.72;
+  /* margin-top: 34px; */
+  /* background: #ffffff;
+  opacity: 0.72; */
+  background-color: rgba(255, 255, 255, 0.72);
 }
 .to-meeting {
   width: 104px;
@@ -232,9 +244,9 @@ export default defineComponent({
 }
 .active {
   width: 80px;
-  height: 32px;
+  height: 36px;
   text-align: center;
-  line-height: 32px;
+  line-height: 36px;
   background-image: url(../assets/imgs/nav-bgi.png);
   background-size: 80px 36px;
   color: #ffffff;

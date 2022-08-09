@@ -2,31 +2,40 @@
   <van-tabbar
     v-model="active"
     @change="changeFun"
+    route
     active-color="#D64533"
     inactive-color="#999999 "
   >
     <van-tabbar-item to="/">
       <span>会议</span>
       <template #icon="props">
-        <img
+        <!-- <img
           v-if="(props.active = 0)"
           src="../assets/imgs/meeting1.png"
           alt=""
         />
-        <img v-else src="../assets/imgs/meeting0.png" alt="" />
-        <!-- <img
-          :src="props.active ? icon[active].active : icon[active].inactive"
-        /> -->
+        <img v-else src="../assets/imgs/meeting0.png" alt="" /> -->
+        <img
+          :src="
+            props.active
+              ? 'https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png'
+              : 'https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png'
+          "
+        />
       </template>
     </van-tabbar-item>
     <van-tabbar-item to="/files">
       <span>文件</span>
       <template #icon="props">
-        <img v-if="(props.active = 1)" src="../assets/imgs/file1.png" alt="" />
-        <img v-else src="../assets/imgs/file0.png" alt="" />
-        <!-- <img
-          :src="props.active ? icon[active].active : icon[active].inactive"
-        /> -->
+        <!-- <img v-if="(props.active = 1)" src="../assets/imgs/file1.png" alt="" />
+        <img v-else src="../assets/imgs/file0.png" alt="" /> -->
+        <img
+          :src="
+            props.active
+              ? 'https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png'
+              : 'https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png'
+          "
+        />
       </template>
     </van-tabbar-item>
   </van-tabbar>
@@ -48,18 +57,23 @@ export default defineComponent({
   setup() {
     const route = useRoute()
 
-    const icon = [
-      {
-        active: "https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png",
-        inactive:
-          "https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png",
-      },
-      {
-        active: "https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png",
-        inactive:
-          "https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png",
-      },
-    ]
+    // const icon = [
+    //   {
+    //     active: "https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png",
+    //     inactive:
+    //       "https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png",
+    //   },
+    //   {
+    //     active: "https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png",
+    //     inactive:
+    //       "https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png",
+    //   },
+    // ]
+    const icon = {
+      active: "https://fastly.jsdelivr.net/npm/@vant/assets/user-active.png",
+      inactive:
+        "https://fastly.jsdelivr.net/npm/@vant/assets/user-inactive.png",
+    }
     // const active = ref(0)
     const active = () => {
       if (route.path == "/") {

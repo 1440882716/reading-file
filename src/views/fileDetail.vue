@@ -1,26 +1,27 @@
 <template>
   <Header></Header>
   <div>
-    <pdf-editor
+    <!-- <pdf-editor
       src="https://mozilla.github.io/pdf.js/web/compressed.tracemonkey-pldi-09.pdf"
-    ></pdf-editor>
+    ></pdf-editor> -->
   </div>
   <!-- <Footer></Footer> -->
 </template>
-<script lang="ts">
-import { defineComponent } from "vue"
+<script>
+import { defineComponent, onMounted, reactive, toRefs } from "vue"
+import { InitData } from "../types/files"
 import { PdfEditor } from "../../packages/"
 import { useRouter } from "vue-router"
 import Header from "../components/header.vue"
-// import Footer from "../components/footer.vue"
 export default defineComponent({
   components: {
     Header,
     PdfEditor,
-    // Footer,
   },
   setup() {
+    const data = reactive(new InitData())
     const router = useRouter()
+    const WPS = require("./static/jwps.es6")
     const toDetail = () => {
       router.push({
         path: "/files",
@@ -37,7 +38,19 @@ export default defineComponent({
         },
       })
     }
+    onMounted(() => {
+      const wps = WPS.config({
+        mode: data.simpleMode ? "simple" : "normal",
+        mount: document.querySelector("#app"),
+        wpsUrl: url,
+      })
+      wps.setToken({ token })
+      let app = wps.Application
+      this.console.log(JSON.stringify(app))
+    })
     return {
+      ...toRefs(data),
+      WPS,
       toDetail,
       toLogin,
     }

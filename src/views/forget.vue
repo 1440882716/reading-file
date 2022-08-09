@@ -69,20 +69,26 @@
   </div>
 </template>
 <script>
-import { defineComponent, reactive, toRefs } from "vue"
+import { defineComponent, reactive, toRefs, getCurrentInstance } from "vue"
 import { InitData } from "../types/login"
 import { useRouter } from "vue-router"
+import { Toast } from "vant"
 export default defineComponent({
+  components: {
+    Toast,
+  },
   setup() {
     const data = reactive(new InitData())
     const router = useRouter()
     const toLogin = () => {
-      router.push({
-        path: "/login",
-        query: {
-          // goodsId: id,
-        },
-      })
+      debugger
+      Toast("提示内容")
+      //   router.push({
+      //     path: "/login",
+      //     query: {
+      //       // goodsId: id,
+      //     },
+      //   })
     }
     return {
       ...toRefs(data),

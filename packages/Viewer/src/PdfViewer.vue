@@ -1,5 +1,27 @@
 <template>
   <div class="pdf-viewer-wrap">
+    <n-spin :show="loading">
+      <template #description>加载PDF中</template>
+      <div class="content-wrap">
+        <div class="render-content" ref="RenderContentRef">
+          <slot name="canvas"></slot>
+          <canvas ref="CanvasRef"></canvas>
+        </div>
+        <div v-if="enabledPage" class="page-wrap">
+          <n-button text @click="handlePrev()" :disabled="prevDisabled">
+            <template #icon>
+              <n-icon><caret-back-icon /></n-icon>
+            </template>
+          </n-button>
+          <span>{{ current }} / {{ total }}</span>
+          <n-button text @click="handleNext()" :disabled="nextDisabled">
+            <template #icon>
+              <n-icon><caret-forward-icon /></n-icon>
+            </template>
+          </n-button>
+        </div>
+      </div>
+    </n-spin>
     <div class="top-bar">
       <div class="left-box">
         <n-button>
@@ -43,28 +65,6 @@
     <div v-if="edit && isEdit" class="tool-bar">
       <slot name="edit-bar"></slot>
     </div>
-    <n-spin :show="loading">
-      <template #description>加载PDF中</template>
-      <div class="content-wrap">
-        <div class="render-content" ref="RenderContentRef">
-          <slot name="canvas"></slot>
-          <canvas ref="CanvasRef"></canvas>
-        </div>
-        <div v-if="enabledPage" class="page-wrap">
-          <n-button text @click="handlePrev()" :disabled="prevDisabled">
-            <template #icon>
-              <n-icon><caret-back-icon /></n-icon>
-            </template>
-          </n-button>
-          <span>{{ current }} / {{ total }}</span>
-          <n-button text @click="handleNext()" :disabled="nextDisabled">
-            <template #icon>
-              <n-icon><caret-forward-icon /></n-icon>
-            </template>
-          </n-button>
-        </div>
-      </div>
-    </n-spin>
   </div>
 </template>
 <script lang="ts">
@@ -277,6 +277,8 @@ export type PdfViewerRefs = InstanceType<typeof PdfViewer>
   justify-content: center;
   background-color: #e0e0e0;
   padding: 2px 5px;
+  position: fixed;
+  bottom: 0px;
 }
 .content-wrap {
   min-height: 0px;

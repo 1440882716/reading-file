@@ -1,125 +1,128 @@
 <template>
-  <Viewer
-    ref="ViewerRef"
-    :buf="pdfBufferArray"
-    :enabledPage="isView"
-    edit
-    @update-state="updateState"
-  >
-    <template #canvas>
-      <Paint
-        v-if="isPaint"
-        ref="PaintRef"
-        :width="viewportWidth"
-        :height="viewportHeight"
-        :paintColor="paintColor"
-      ></Paint>
-      <Text
-        v-else-if="isText"
-        ref="TextRef"
-        :width="viewportWidth"
-        :height="viewportHeight"
-      ></Text>
-      <Squre
-        v-else-if="isSqure"
-        :width="viewportWidth"
-        :height="viewportHeight"
-      ></Squre>
-      <div v-else></div>
-    </template>
-    <template #edit-bar>
-      <n-button-group v-if="isPaint">
-        <n-button title="退出" @click="handleExit()">退出</n-button>
-        <n-button title="保存画笔" @click="handleSavePaint()"
-          >保存画笔</n-button
-        >
-        <n-popconfirm :show-icon="false">
-          <template #trigger>
-            <n-button>
-              <div :class="['select-color', colorName]"></div>
-            </n-button>
-          </template>
-          <div class="color-box">
-            <div :class="['checked-color', colorName]"></div>
-            <div>
-              <!-- 第一组颜色 -->
-              <div class="color-box">
-                <div
-                  class="color-item color1"
-                  @click="chooseColor('color1', '#000000')"
-                ></div>
-                <div
-                  class="color-item color2"
-                  @click="chooseColor('color2', '#808080')"
-                ></div>
-                <div
-                  class="color-item color3"
-                  @click="chooseColor('color3', '#800000')"
-                ></div>
-                <div
-                  class="color-item color4"
-                  @click="chooseColor('color4', '#F7883A')"
-                ></div>
-                <div
-                  class="color-item color5"
-                  @click="chooseColor('color5', '#308430')"
-                ></div>
-                <div
-                  class="color-item color6"
-                  @click="chooseColor('color6', '#385AD3')"
-                ></div>
-                <div
-                  class="color-item color7"
-                  @click="chooseColor('color7', '#800080')"
-                ></div>
-                <div
-                  class="color-item color8"
-                  @click="chooseColor('color8', '#009999')"
-                ></div>
-              </div>
-              <!-- 第二组颜色 -->
-              <div class="color-box">
-                <div
-                  class="color-item color9"
-                  @click="chooseColor('color9', '#FFFFFF')"
-                ></div>
-                <div
-                  class="color-item color10"
-                  @click="chooseColor('color10', '#C0C0C0')"
-                ></div>
-                <div
-                  class="color-item color11"
-                  @click="chooseColor('color11', '#FB3838')"
-                ></div>
-                <div
-                  class="color-item color12"
-                  @click="chooseColor('color12', '#FFFF00')"
-                ></div>
-                <div
-                  class="color-item color13"
-                  @click="chooseColor('color13', '#99CC00')"
-                ></div>
-                <div
-                  class="color-item color14"
-                  @click="chooseColor('color14', '#3894E4')"
-                ></div>
-                <div
-                  class="color-item color15"
-                  @click="chooseColor('color15', '#F31BF3')"
-                ></div>
-                <div
-                  class="color-item color16"
-                  @click="chooseColor('color16', '#16DCDC')"
-                ></div>
+  <div ref="boxRef">
+    <Viewer
+      ref="ViewerRef"
+      :buf="pdfBufferArray"
+      :enabledPage="isView"
+      edit
+      @update-state="updateState"
+    >
+      <template #canvas>
+        <Paint
+          v-if="isPaint"
+          ref="PaintRef"
+          :width="viewportWidth"
+          :height="viewportHeight"
+          :paintColor="paintColor"
+        ></Paint>
+        <Text
+          v-else-if="isText"
+          ref="TextRef"
+          :width="viewportWidth"
+          :height="viewportHeight"
+        ></Text>
+        <Squre
+          v-else-if="isSqure"
+          :width="viewportWidth"
+          :height="viewportHeight"
+        ></Squre>
+        <div v-else></div>
+      </template>
+      <template #edit-bar>
+        <n-button-group v-if="isPaint">
+          <n-button title="退出" @click="handleExit()">退出</n-button>
+          <n-button title="保存画笔" @click="handleSavePaint()"
+            >保存画笔</n-button
+          >
+          <n-popconfirm :show-icon="false">
+            <template #trigger>
+              <n-button>
+                <div :class="['select-color', colorName]"></div>
+              </n-button>
+            </template>
+            <div class="color-box">
+              <div :class="['checked-color', colorName]"></div>
+              <div>
+                <!-- 第一组颜色 -->
+                <div class="color-box">
+                  <div
+                    class="color-item color1"
+                    @click="chooseColor('color1', '#000000')"
+                  ></div>
+                  <div
+                    class="color-item color2"
+                    @click="chooseColor('color2', '#808080')"
+                  ></div>
+                  <div
+                    class="color-item color3"
+                    @click="chooseColor('color3', '#800000')"
+                  ></div>
+                  <div
+                    class="color-item color4"
+                    @click="chooseColor('color4', '#F7883A')"
+                  ></div>
+                  <div
+                    class="color-item color5"
+                    @click="chooseColor('color5', '#308430')"
+                  ></div>
+                  <div
+                    class="color-item color6"
+                    @click="chooseColor('color6', '#385AD3')"
+                  ></div>
+                  <div
+                    class="color-item color7"
+                    @click="chooseColor('color7', '#800080')"
+                  ></div>
+                  <div
+                    class="color-item color8"
+                    @click="chooseColor('color8', '#009999')"
+                  ></div>
+                </div>
+                <!-- 第二组颜色 -->
+                <div class="color-box">
+                  <div
+                    class="color-item color9"
+                    @click="chooseColor('color9', '#FFFFFF')"
+                  ></div>
+                  <div
+                    class="color-item color10"
+                    @click="chooseColor('color10', '#C0C0C0')"
+                  ></div>
+                  <div
+                    class="color-item color11"
+                    @click="chooseColor('color11', '#FB3838')"
+                  ></div>
+                  <div
+                    class="color-item color12"
+                    @click="chooseColor('color12', '#FFFF00')"
+                  ></div>
+                  <div
+                    class="color-item color13"
+                    @click="chooseColor('color13', '#99CC00')"
+                  ></div>
+                  <div
+                    class="color-item color14"
+                    @click="chooseColor('color14', '#3894E4')"
+                  ></div>
+                  <div
+                    class="color-item color15"
+                    @click="chooseColor('color15', '#F31BF3')"
+                  ></div>
+                  <div
+                    class="color-item color16"
+                    @click="chooseColor('color16', '#16DCDC')"
+                  ></div>
+                </div>
               </div>
             </div>
-          </div>
-        </n-popconfirm>
-      </n-button-group>
-      <n-button-group v-else-if="isText">
-        <n-button title="退出" @click="handleExit()">退出</n-button>
-        <n-button title="保存文字" @click="handleSaveText()">保存文字</n-button>
-        <!-- <n-popconfirm :show-icon="false">
+          </n-popconfirm>
+        </n-button-group>
+        <n-button-group v-else-if="isText">
+          <n-button title="退出" @click="handleExit()">退出</n-button>
+          <n-button title="保存文字" @click="handleSaveText()"
+            >保存文字</n-button
+          >
+          <!-- <n-popconfirm :show-icon="false">
           <template #trigger>
             <n-button>文字颜色</n-button>
           </template>
@@ -132,13 +135,13 @@
             <div class="color-item yellow" @click="chooseColor('yellow')"></div>
           </div>
         </n-popconfirm> -->
-      </n-button-group>
-      <n-button-group v-else-if="isSqure">
-        <n-button title="退出" @click="handleExit()">退出</n-button>
-        <n-button title="保存线框" @click="handleSaveSqure()"
-          >保存线框</n-button
-        >
-        <!-- <n-popconfirm :show-icon="false">
+        </n-button-group>
+        <n-button-group v-else-if="isSqure">
+          <n-button title="退出" @click="handleExit()">退出</n-button>
+          <n-button title="保存线框" @click="handleSaveSqure()"
+            >保存线框</n-button
+          >
+          <!-- <n-popconfirm :show-icon="false">
           <template #trigger>
             <n-button>文字颜色</n-button>
           </template>
@@ -151,18 +154,19 @@
             <div class="color-item yellow" @click="chooseColor('yellow')"></div>
           </div>
         </n-popconfirm> -->
-      </n-button-group>
-      <n-button-group v-else>
-        <n-button title="重做" @click="handleRestore()">重做</n-button>
-        <n-button title="文字" @click="handleText()">文字</n-button>
-        <n-button title="注释">注释</n-button>
-        <n-button title="画笔" @click="handlePaint()">画笔</n-button>
-        <n-button title="划线">划线</n-button>
-        <n-button title="线框" @click="handleSqure()">线框</n-button>
-        <n-button title="保存" @click="handleSave()">保存</n-button>
-      </n-button-group>
-    </template>
-  </Viewer>
+        </n-button-group>
+        <n-button-group v-else>
+          <n-button title="重做" @click="handleRestore()">重做</n-button>
+          <n-button title="文字" @click="handleText()">文字</n-button>
+          <n-button title="注释">注释</n-button>
+          <n-button title="画笔" @click="handlePaint()">画笔</n-button>
+          <n-button title="划线">划线</n-button>
+          <n-button title="线框" @click="handleSqure()">线框</n-button>
+          <n-button title="保存" @click="handleSave()">保存</n-button>
+        </n-button-group>
+      </template>
+    </Viewer>
+  </div>
 </template>
 <script lang="ts">
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
@@ -181,6 +185,7 @@ import Paint, { PaintRefs } from "./Paint.vue"
 import Text, { TextRefs } from "./Text.vue"
 import Squre, { SqureRefs } from "./Squre.vue"
 import { NButton, NButtonGroup, NPopconfirm } from "naive-ui"
+import html2canvas from "html2canvas"
 type EditState = null | "Paint" | "Text" | "Squre"
 export default defineComponent({
   name: "PdfEditor",
@@ -213,6 +218,7 @@ export default defineComponent({
       TextRef: {} as TextRefs,
       SqureRef: {} as SqureRefs,
       CanvasRef: {} as HTMLCanvasElement,
+      boxRef: {} as HTMLCanvasElement,
       colorName: "color1",
       paintColor: "#FB3838",
     })
@@ -232,6 +238,7 @@ export default defineComponent({
     // method
     const handleRestore = async () => {
       console.log(props.src)
+      // getImg()
       // debugger
       state.pdfBufferArray = await getBufferArray(props.src)
     }
@@ -267,8 +274,11 @@ export default defineComponent({
       await buildPdfDoc()
       const pngImageBase64 = state.PaintRef.save()
       await drawPaint(pngImageBase64)
+      console.log("画笔图片===", pngImageBase64)
       state.pdfBufferArray = await pdfDoc!.save()
       handleExit()
+      // 截图画笔
+      getImg()
     }
     const handleSaveSqure = async () => {
       await buildPdfDoc()
@@ -287,6 +297,7 @@ export default defineComponent({
       state.editState = "Squre"
     }
     const updateState = (parentState: any) => {
+      console.log(parentState)
       state.current = parentState.current
       state.total = parentState.total
       state.viewportWidth = parentState.viewportWidth
@@ -301,6 +312,16 @@ export default defineComponent({
     const chooseColor = async (name: string, color: string) => {
       state.colorName = name
       state.paintColor = color
+    }
+    // 截图
+    const getImg = () => {
+      // 第一个参数是需要生成截图的元素,第二个是自己需要配置的参数,宽高等
+      html2canvas(state.boxRef, {
+        backgroundColor: null,
+      }).then((canvas) => {
+        let url = canvas.toDataURL("image/png")
+        console.log("操作后的图片===", url)
+      })
     }
     onMounted(async () => {
       await fetchPdfDoc()
@@ -330,6 +351,7 @@ export default defineComponent({
       handleSqure,
       handleRestore,
       chooseColor,
+      getImg,
     }
   },
 })

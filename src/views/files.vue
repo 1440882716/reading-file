@@ -131,9 +131,9 @@ export default defineComponent({
 }
 .active {
   width: 80px;
-  height: 32px;
+  height: 36px;
   text-align: center;
-  line-height: 32px;
+  line-height: 36px;
   background-image: url(../assets/imgs/nav-bgi.png);
   background-size: 80px 36px;
   color: #ffffff;

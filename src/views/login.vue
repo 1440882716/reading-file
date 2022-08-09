@@ -64,28 +64,29 @@
   </div>
 </template>
 <script>
-import { defineComponent, reactive, toRefs } from "vue"
+import { defineComponent, reactive, toRefs, getCurrentInstance } from "vue"
 import { NForm, NInput } from "naive-ui"
+import { Toast } from "vant"
 import { InitData } from "../types/login"
 import { useRouter } from "vue-router"
 export default defineComponent({
   components: {
     NForm,
     NInput,
-    // useMessage,
+    Toast,
   },
   setup() {
     const router = useRouter()
     const data = reactive(new InitData())
-    // const message = useMessage()
+
     const login = () => {
       console.log(data.loginForm)
-      router.push({
-        path: "/",
-        query: {
-          // goodsId: id,
-        },
-      })
+      Toast("提示内容")
+      // router.push({
+      //   path: "/",
+      //   query: {
+      //   },
+      // })
 
       //   let phoneReg = /(^1\d{10}$)|(^[0-9]\d{7}$)/
       //   if (!phoneReg.test(data.loginForm.phone)) {

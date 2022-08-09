@@ -1,5 +1,6 @@
 interface meetingData {
     id:number
+    userId:number
     title:string
     unit:string
     meetingTime:string
@@ -14,6 +15,7 @@ export class InitData{
     meetingType:number=1
     meetingInfo:meetingData={
         id:1,
+        userId:123,
             title:"成都双流区第22届人大代表会议",
             unit:"成都市双流区双流政府人大",
             meetingTime:"2022-07-15  10:00 ~ 2022-07-15  17:00",
@@ -23,6 +25,7 @@ export class InitData{
     meetingList:meetingData[]=[
         {
             id:1,
+            userId:123,
             title:"成都双流区第22届人大代表会议",
             unit:"成都市双流区双流政府人大",
             meetingTime:"2022-07-15  10:00 ~ 2022-07-15  17:00",
@@ -31,6 +34,7 @@ export class InitData{
         },
         {
             id:2,
+            userId:123,
             title:"成都双流区第22届人大代表会议",
             unit:"成都市双流区双流政府人大",
             meetingTime:"2022-07-15  10:00 ~ 2022-07-15  17:00",
@@ -39,6 +43,7 @@ export class InitData{
         },
         {
             id:3,
+            userId:123,
             title:"成都双流区第22届人大代表会议",
             unit:"成都市双流区双流政府人大",
             meetingTime:"2022-07-15  10:00 ~ 2022-07-15  17:00",
